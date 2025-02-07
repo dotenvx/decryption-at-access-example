@@ -1,5 +1,6 @@
 const dotenvx = require('@dotenvx/dotenvx')
 const express = require('express')
+dotenvx.config()
 
 const app = express()
 const port = 3000
