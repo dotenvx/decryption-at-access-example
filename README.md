@@ -14,10 +14,8 @@ $ docker build -t daa-app . && docker run --rm -p 3000:3000 --name daa-container
 
 2. Visit [localhost:3000](http://localhost:3000) a couple times or so.
 
-3. Run `docker inspect` to make sure env has NOT been set.
+3. Visit [localhost:3000/leakylog](http://localhost:3000)
 
-```
-$ docker inspect daa-container
-```
+You will not see `HELLO` in the leaky env logs - demonstrating that dotenvx supports "Decryption-at-Access" avoiding the [leaky log issue](https://youtu.be/j3QJRdiTr1I?t=696).
 
-If you do not see `HELLO` then decryption at access is successfully working.
+P.S. A system/framework should also be configured to not leak env to logs ideally. Most good frameworks support this out of the box. But nonetheless, if you use decryption-at-access with dotenvx `get` you will be protected.

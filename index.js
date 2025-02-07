@@ -11,7 +11,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/env', (req, res) => {
-  res.send(JSON.stringify(process.env, null, 2))
+  const env = JSON.stringify(process.env, null, 2)
+  res.send(env)
+})
+
+// simulates a badly controlled (leaky) log - leaking envs
+app.get('/leakylog', (req, res) => {
+  const env = JSON.stringify(process.env, null, 2)
+  res.send(env)
 })
 
 app.listen(port, () => {
