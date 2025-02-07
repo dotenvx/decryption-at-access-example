@@ -6,7 +6,9 @@ const port = 3000
 
 app.get('/', (req, res) => {
   const hello = dotenvx.get('HELLO')
-  res.send(`Hello, ${hello}!\n\n(from process.env: ${process.env.HELLO})`)
+  res.send(`Hello, ${hello}!
+
+  (the following should be undefined as process.env should NOT get set for decryption-at-access: ${process.env.HELLO})`)
 })
 
 app.listen(port, () => {
